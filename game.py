@@ -11,6 +11,20 @@ CREATE_ENEMY_EVENT = pygame.USEREVENT
 # 我们还可以定义一个事件常量 （发射子弹）
 HERO_FIRE_EVENT = pygame.USEREVENT + 1
 
+bg1 = pygame.image.load('./images/enemy0_down1.png')
+bg2 = pygame.image.load('./images/enemy0_down2.png')
+bg3 = pygame.image.load('./images/enemy0_down3.png')
+bg4= pygame.image.load('./images/enemy0_down4.png')
+
+#爆炸的精灵组
+enemy1_down_group = pygame.sprite.Group()
+
+#把爆炸图片放到列表中
+enemy1_down_surface = []
+enemy1_down_surface.append(bg1)
+enemy1_down_surface.append(bg2)
+enemy1_down_surface.append(bg3)
+enemy1_down_surface.append(bg4)
 
 
 class GameSprite(pygame.sprite.Sprite):
@@ -65,7 +79,6 @@ class Enemy(GameSprite):
 		# 1 调用父类方法 创建敌机精灵类 并且指定敌机图像
 		super().__init__('./images/enemy1.png')
 		# 2 设置敌机初始速度 稍后设置 （随机数）
-		# 我的sublime 没有花事件去调  老是跟我发脾气
 		self.speed = random.randint(1, 3)
 		# 3 设置敌机的随机初始位置 稍后设置
 		# self.rect.y  = self.rect.bottom - self.rect.height
@@ -146,7 +159,7 @@ class Hero(GameSprite):
 class Bullet(GameSprite):
 	"""子弹精灵"""
 	def __init__(self):
-		super().__init__('./images/bullet1.png',-100)
+		super().__init__('./images/bullet1.png',-20)
 	def update(self):
 		super().update()
 		# 判断是否超出屏幕

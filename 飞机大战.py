@@ -24,7 +24,7 @@ class PlaneGame(object):
         """在开始游戏这里我们需要做下面几件事"""
         while True:
             # 1 设置帧率
-            self.clock.tick(60)
+            self.clock.tick(10)
             # 2 事件监听 主要是要监听我们鼠标 键盘的一些事件
             self.__event_handler()
             # 3 碰撞检测 碰撞检测的内容比较  在这里我还没有定义 现在需要补上
@@ -44,8 +44,8 @@ class PlaneGame(object):
         # True 就表示是第二张图片
         bg2 = Background(True)
         # 英雄
-        self.hero = Hero(60)
-        self.hero1 = Hero(-60)
+        self.hero = Hero(10)
+        self.hero1 = Hero(10)
         self.back_group = pygame.sprite.Group(bg1, bg2)
         # 敌机组
         self.enemy_group = pygame.sprite.Group()
@@ -66,18 +66,17 @@ class PlaneGame(object):
             if key_pressed[pygame.K_RIGHT]:
                 print("向右边移动")
                 # 给英雄一个移动速度
-                self.hero.speed = 8
+                self.hero.speed = 15
             elif key_pressed[pygame.K_LEFT]:
-                self.hero.speed = -8
+                self.hero.speed = -15
                 print("向左边移动")
 
             elif key_pressed[pygame.K_UP]:
                 print("向上边移动")
-                self.hero.speed1 = -8
-
+                self.hero.speed1 = -15
             elif key_pressed[pygame.K_DOWN]:
                 print("想下边移动")
-                self.hero.speed1 = 8
+                self.hero.speed1 = 15
             else:
                 self.hero.speed = 0
                 self.hero.speed1 = 0
